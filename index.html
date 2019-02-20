@@ -7,7 +7,7 @@
 
     <div id="app">
         Hola {{ nombre }}
-        <a :href="url" target="_blank">{{ pagina }}</a>
+        <a v-if="mostrar" :href="url" target="_blank">{{ pagina }}</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -17,7 +17,8 @@
             data: {
                 nombre: 'Ludwing',
                 url: 'https://google.com',
-                pagina: 'Google Inc.'
+                pagina: 'Google Inc.',
+                mostrar: true
             }
         })
     </script>
