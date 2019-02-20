@@ -6,8 +6,15 @@
 <body>
 
     <div id="app">
-        Hola {{ nombre }}
-        <a v-if="mostrar" :href="url" target="_blank">{{ pagina }}</a>
+        <!-- Agrupar elementos comunes con un template
+            el cual no se dibuja en la pantalla
+         -->
+        <template v-if="mostrar">
+            <h1>Título</h1>
+            <h2>Subtitulo</h2>
+            Hola {{ nombre }}
+            <a :href="url" target="_blank">{{ pagina }}</a>
+        </template>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
