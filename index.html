@@ -6,15 +6,21 @@
 <body>
 
     <div id="app">
-        <!-- Agrupar elementos comunes con un template
-            el cual no se dibuja en la pantalla
+        <!-- 
+            Uso del elemento show para mostrar u ocultar elementos:
+
+            v-if: Crea o elimina/no renderiza elementos
+            v-show: Muestra u oculta elementos mediante atributos CSS
          -->
-        <template v-if="mostrar">
+        <div v-show="mostrar">
             <h1>Título</h1>
             <h2>Subtitulo</h2>
             Hola {{ nombre }}
             <a :href="url" target="_blank">{{ pagina }}</a>
-        </template>
+        </div>
+        <div v-show="!mostrar">
+            Bloque oculto
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
