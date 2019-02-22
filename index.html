@@ -2,16 +2,16 @@
 <html>
 <head>
     <title>Curso Vue.js</title>
+    <meta charset="utf-8">
 </head>
 <body>
 
     <div id="app">
         <!-- 
-            Uso de filtros
+            Obtención de datos de formularios y enlace con view model por medio de la directiva v-model
          -->
-        <button @click="sumar">Sumar 1</button>
-        <button @click="restar">Restar 1</button>
-        Valor del contador {{ contador }}
+        <input type="text" name="nombre" placeholder="Ingrese su nombre" v-model="nombre">
+        <p>Su nombre en mayúsculas es: {{ nombre | uppercase }}</p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -19,14 +19,11 @@
         let app = new Vue({
             el: '#app',
             data: {
-                contador: 0
+                nombre: ''
             },
-            methods: {
-                sumar: function () {
-                    this.contador++;
-                },
-                restar: function() {
-                    this.contador--;
+            filters: {
+                uppercase: function (str) {
+                    return str.toUpperCase()
                 }
             }
         })
