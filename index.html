@@ -9,9 +9,9 @@
         <!-- 
             Uso de filtros
          -->
-            <h1>{{ titulo | uppercase }}</h1>
-            <h2>{{ subtitulo | lowercase }}</h2>
-            <h3>{{ capitalizado | capitalize }}</h3>
+        <button v-on:click="sumar">Sumar 1</button>
+        <button v-on:click="restar">Restar 1</button>
+        Valor del contador {{ contador }}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -19,19 +19,14 @@
         let app = new Vue({
             el: '#app',
             data: {
-                titulo: "Este es un título",
-                subtitulo: "Este es un subtitulo",
-                capitalizado: "texto capitazado"
+                contador: 0
             },
-            filters: {
-                uppercase: function(str) {
-                    return str.toUpperCase();
+            methods: {
+                sumar: function () {
+                    this.contador++;
                 },
-                lowercase: function(str) {
-                    return str.toLowerCase();
-                },
-                capitalize: function(str) {
-                    return str.charAt(0).toUpperCase() + str.slice(1)
+                restar: function() {
+                    this.contador--;
                 }
             }
         })
