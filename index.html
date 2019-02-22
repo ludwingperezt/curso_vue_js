@@ -8,21 +8,20 @@
 
     <div id="app">
         <!-- 
-            Obtención de datos de formularios y enlace con view model por medio de la directiva v-model
+            Uso de ciclo para el render de los componentes de un formulario
          -->
-        <input type="text" name="nombre" placeholder="Ingrese su nombre" v-model="nombre">
-        <p>Su nombre en mayúsculas es: {{ nombre | uppercase }}</p>
+
         <form @submit.prevent="submit">
             <h2>¿Cuales son tus cursos favoritos?</h2>
-            <input v-model="cursos" type="checkbox" id="cb_vue" value="vue">
-            <label for="cb_vue">Vue.js</label>
 
-            <input v-model="cursos" type="checkbox" id="cb_angular" value="angular">
-            <label for="cb_angular">Angular</label>
-
-            <input v-model="cursos" type="checkbox" id="cb_react" value="react">
-            <label for="cb_react">React</label>
-
+            <!-- 
+            Para utilizar un ciclo:
+            v-for="<variable de iteracion> in <colección>"
+             -->
+            <template v-for="curso in cursos">
+                <input v-model="cursosSeleccionados" type="checkbox" v-bind:id="curso.value" v-bind:value="curso.value">
+                <label v-bind:for="curso.value">{{ curso.nombre }}</label>
+            </template>
             <button type="submit">Enviar</button>
 
         </form>
@@ -34,17 +33,15 @@
             el: '#app',
             data: {
                 nombre: '',
-                cursos: []
-            },
-            filters: {
-                uppercase: function (str) {
-                    return str.toUpperCase()
-                }
+                cursos: [{nombre: 'Curso Vue.js', value: 'vue'},
+                {nombre: 'Curso angular', value:'angular'},
+                {nombre: 'Curso react', value: 'react'}],
+                cursosSeleccionados: []
             },
             methods: {
                 submit: function() {
                     console.log('Submit');
-                    console.log(this.cursos);
+                    console.log(this.cursosSeleccionados);
                 }
             }
         })
