@@ -7,20 +7,11 @@
 
     <div id="app">
         <!-- 
-            Uso del elemento show para mostrar u ocultar elementos:
-
-            v-if: Crea o elimina/no renderiza elementos
-            v-show: Muestra u oculta elementos mediante atributos CSS
+            Uso de filtros
          -->
-        <div v-show="mostrar">
-            <h1>Título</h1>
-            <h2>Subtitulo</h2>
-            Hola {{ nombre }}
-            <a :href="url" target="_blank">{{ pagina }}</a>
-        </div>
-        <div v-show="!mostrar">
-            Bloque oculto
-        </div>
+            <h1>{{ titulo | uppercase }}</h1>
+            <h2>{{ subtitulo | lowercase }}</h2>
+            <h3>{{ capitalizado | capitalize }}</h3>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -28,10 +19,20 @@
         let app = new Vue({
             el: '#app',
             data: {
-                nombre: 'Ludwing',
-                url: 'https://google.com',
-                pagina: 'Google Inc.',
-                mostrar: true
+                titulo: "Este es un título",
+                subtitulo: "Este es un subtitulo",
+                capitalizado: "texto capitazado"
+            },
+            filters: {
+                uppercase: function(str) {
+                    return str.toUpperCase();
+                },
+                lowercase: function(str) {
+                    return str.toLowerCase();
+                },
+                capitalize: function(str) {
+                    return str.charAt(0).toUpperCase() + str.slice(1)
+                }
             }
         })
     </script>
