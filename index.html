@@ -12,6 +12,20 @@
          -->
         <input type="text" name="nombre" placeholder="Ingrese su nombre" v-model="nombre">
         <p>Su nombre en mayúsculas es: {{ nombre | uppercase }}</p>
+        <form @submit.prevent="submit">
+            <h2>¿Cuales son tus cursos favoritos?</h2>
+            <input v-model="cursos" type="checkbox" id="cb_vue" value="vue">
+            <label for="cb_vue">Vue.js</label>
+
+            <input v-model="cursos" type="checkbox" id="cb_angular" value="angular">
+            <label for="cb_angular">Angular</label>
+
+            <input v-model="cursos" type="checkbox" id="cb_react" value="react">
+            <label for="cb_react">React</label>
+
+            <button type="submit">Enviar</button>
+
+        </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -19,11 +33,18 @@
         let app = new Vue({
             el: '#app',
             data: {
-                nombre: ''
+                nombre: '',
+                cursos: []
             },
             filters: {
                 uppercase: function (str) {
                     return str.toUpperCase()
+                }
+            },
+            methods: {
+                submit: function() {
+                    console.log('Submit');
+                    console.log(this.cursos);
                 }
             }
         })
