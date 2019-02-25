@@ -11,7 +11,13 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
+    /*
+        Con el atributo scope se evita que los estilos aplicados
+        al componente sobreescriban estilos de otros componentes mediante
+        la aplicación de data attributes a los elementos del entorno de las
+        reglas CSS definidas.
+    */
     li
         display block
         margin 10px 0
