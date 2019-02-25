@@ -2,6 +2,8 @@
   #app
     img(src='./assets/logo.png')
     h1 LwMusic
+    select(v-model="selectedCountry")
+      option(v-for="country in countries" v-bind:value="country.value") {{ country.name }}
     ul
       artist(v-for="artist in artists" v-bind:artist="artist" v-bind:key="artist.mbid") {{ artist.name }}
 </template>
@@ -14,19 +16,34 @@ export default {
   name: 'app',
   data () {
     return {
-      artists: []
+      artists: [],
+      countries: [
+      {name: 'Argentina', value: 'argentina'},
+      {name: 'Colombia', value: 'colombia'},
+      {name: 'España', value: 'spain'}
+      ],
+      selectedCountry: 'argentina'
     }
   },
   components: {
     Artist //<-- Es el equivalente en JS2015 de Artist: Artist
   },
-  mounted: function (argument) {
-    // body...
-    const self = this
-    getArtists()
+  methods: {
+    refreshArtists() {
+      const self = this
+      getArtists(this.selectedCountry)
       .then(function(artists){
         self.artists = artists
       })
+    }
+  },
+  mounted() {
+    this.refreshArtists()
+  },
+  watch: {
+    selectedCountry() {
+      this.refreshArtists()
+    }
   }
 }
 </script>
