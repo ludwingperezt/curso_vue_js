@@ -1,7 +1,9 @@
 # platzimusic
 
-Proyecto de curso de introducción a Vue.js de Platzi  La aplicación se conecta a la API de last.fm y obtiene la lista de artistas más populares según el país seleccionado (Febrero 2019)
-
+Proyecto de curso de introducción a Vue.js de Platzi.  
+La aplicación se conecta a la API de last.fm y obtiene la lista de artistas 
+más populares según el país seleccionado. 
+(Febrero 2019)
 
 
 Páginas y librerías utilizadas:
