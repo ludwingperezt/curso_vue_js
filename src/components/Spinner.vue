@@ -1,5 +1,5 @@
 <template>
-    <!-- -->
+    <!-- Spinner extraído de: https://projects.lukehaas.me/css-loaders/ -->
     <div class="loader">Loading...</div>
 </template>
 

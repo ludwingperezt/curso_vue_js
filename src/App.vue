@@ -1,6 +1,6 @@
 <template lang=pug>
   #app
-    img(src='https://ludwingperezt.github.io/curso_vue_js/dist/logo.png')
+    img(src='dist/logo.png')
     h1 LwMusic
     select(v-model="selectedCountry")
       option(v-for="country in countries" v-bind:value="country.value") {{ country.name }}
