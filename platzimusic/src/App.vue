@@ -3,18 +3,22 @@
     img(src='./assets/logo.png')
     h1 LwMusic
     ul
-      li(v-for="artist in artists") {{ artist.name }}
+      artist(v-for="artist in artists" v-bind:artist="artist" v-bind:key="artist.mbid") {{ artist.name }}
 </template>
 
 <script>
 import getArtists from './api'
+import Artist from './components/Artist.vue'
 
 export default {
   name: 'app',
   data () {
     return {
-      artists: [ {name: 'David Bowie'}, {name: 'The Beatles'} ]
+      artists: []
     }
+  },
+  components: {
+    Artist //<-- Es el equivalente en JS2015 de Artist: Artist
   },
   mounted: function (argument) {
     // body...
